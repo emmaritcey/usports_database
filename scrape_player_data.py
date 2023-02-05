@@ -1,3 +1,10 @@
+'''
+scrape individual player data from USports women's basketball website
+scrape each data type individually to separate csv files (shooting, ball control, or general)
+YEARS: indicates years to scrape data from
+'''
+
+
 import re
 import requests
 from bs4 import BeautifulSoup
