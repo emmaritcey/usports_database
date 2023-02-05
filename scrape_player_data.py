@@ -14,9 +14,8 @@ TEAMS =  ['acadia', 'capebreton', 'dalhousie', 'memorial', "saintmarys", 'stfx',
         'york', 'alberta', 'brandon', 'calgary', 'lethbridge', 'macewan', 'manitoba', 'mountroyal', 
         'regina', 'saskatchewan', 'thompsonrivers', 'trinitywestern', 'ubc', 'ubcokanagan',
         'ufv', 'unbc', 'victoria', 'winnipeg']
-TEAMS = ['acadia']
+
 YEARS = ['2011-12', '2012-13', '2013-14', '2014-15', '2015-16', '2016-17', '2017-18', '2018-19', '2019-20', '2021-22']
-YEARS = ['2011-12']
 
 def parse_name(string):
     temp_list = string.split(' ') #split into list, each ' ' is separate entry
