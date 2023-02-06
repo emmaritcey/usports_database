@@ -1,0 +1,92 @@
+import pandas as pd
+import os
+
+
+'''
+Create table with all players names and player id's
+Table Columns: player_id, NAME
+'''
+def get_players_tbl(curr_path):
+    #load names of all players from each season from raw csv
+    player_names = pd.read_csv(curr_path + '/raw_csv_files/player_stats_info.csv', usecols=['NAME'])
+    #remove duplicate names, only keep one row for each player
+    players_tbl = player_names.drop_duplicates(ignore_index=True)
+
+    #save to csv file where index is player id
+    players_tbl.to_csv('tables/players.csv', index_label='player_id')
+
+
+'''
+Create table containing stats for all players
+player_id obtained from table in players.csv  and matched based on player name   
+INPUT:
+    - curr_path: current path
+    - columns: columns of the table
+    - raw_data_file: file path containing raw data
+    - save_file: file to save table to             
+
+ASSUMES NO TWO PLAYERS HAVE THE SAME NAME :(
+    NEED TO CHANGE THIS LATER
+CAN ALSO DROP NAME COLUMN FROM FINAL TABLE
+'''
+def get_player_stats_tbl(curr_path, columns, raw_data_file, save_file):
+    #load general info of all players from each season from raw csv
+    #keep all columns from raw csv for this table
+    player_info= pd.read_csv(curr_path + '/raw_csv_files/' + raw_data_file, 
+                               usecols=columns)
+    
+    #load players.csv to get corresponding player id's for each row
+    players_df = pd.read_csv(curr_path + '/tables/players.csv', index_col='player_id')
+
+    #create player id column in info df
+    player_info['player_id'] = 0
+    
+    #iterate through rows and get correct player id from playerdf and assign to each player instance
+    for index, row in players_df.iterrows():
+        #get name of player in curren row
+        name = row['NAME']
+        #select row with column 'NAME' equal to name of player in current row
+        player_row = player_info.loc[player_info['NAME'] == name]
+        id = index #id is index since it was assigned as the row number in players_df
+        #assign id to all rows in player_info with 'NAME' equal to name of player in current row
+        player_info['player_id'].mask(player_info['NAME'] == name, id, inplace=True)
+
+    #save table to csv
+    player_info.to_csv(save_file)
+
+
+
+
+def main():
+    #set variables to decide which tables are being created
+    get_players = 0
+    get_player_info = 1
+    get_player_shooting = 1
+    get_player_ballcntrl = 1
+    
+    #get current path
+    curr_path = os.getcwd()
+    
+    if get_players:
+        get_players_tbl(curr_path)
+    if get_player_info:
+        columns = ['NAME', 'TEAM', 'SEASON','PLYR_YR', 'NUM', 'GP', 'GS', 'MIN/G']
+        raw_data_file = 'player_stats_info.csv'
+        save_file = 'tables/player_info.csv'
+        get_player_stats_tbl(curr_path, columns, raw_data_file, save_file)
+        
+    if get_player_shooting:
+        columns = ['NAME', 'SEASON', 'FGM', 'FGA', 'FG%', 
+            '3FGM', '3FGA', '3FG%', 'FTM','FTA', 'FT%', 'PPG']
+        raw_data_file = 'player_stats_shooting.csv'
+        save_file = 'tables/player_shooting.csv'
+        get_player_stats_tbl(curr_path, columns, raw_data_file, save_file)
+        
+    if get_player_ballcntrl:
+        columns = ['NAME', 'SEASON', 'DREB/G', 'OREB/G', 'REB/G', 'PF/G', 'A/G', 'TO/G', 'A/TO', 'STL/G', 'BLK/G']
+        raw_data_file = 'player_stats_ball_control.csv'
+        save_file = 'tables/player_ballcontrol.csv'
+        get_player_stats_tbl(curr_path, columns, raw_data_file, save_file)
+    
+    
+main()
