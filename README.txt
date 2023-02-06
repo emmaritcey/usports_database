@@ -8,3 +8,7 @@ To scrape individual player data run: scrape_player_data.py
         TEAMS: list of teams to collect player data from 
         YEARS: years/seasons to collect player data from
     - saves raw data into csv files
+
+To create tables for each type of player data run: create_player_tables.py
+    - uses raw data files to create tables
+    - assigns each player a unique player_id that's consistent across all tables
