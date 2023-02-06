@@ -55,14 +55,28 @@ def get_player_stats_tbl(curr_path, columns, raw_data_file, save_file):
     player_info.to_csv(save_file)
 
 
+'''
+Create table with all team names and team id's
+Table Columns: team_id, TEAM
+'''
+def get_teams_tbl(curr_path):
+    #load names of all players from each season from raw csv
+    team_names = pd.read_csv(curr_path + '/tables/player_info.csv', usecols=['TEAM'])
+    #remove duplicate names, only keep one row for each player
+    teams_tbl = team_names.drop_duplicates(ignore_index=True)
+
+    #save to csv file where index is player id
+    teams_tbl.to_csv('tables/teams.csv', index_label='team_id')
+
 
 
 def main():
     #set variables to decide which tables are being created
     get_players = 0
-    get_player_info = 1
-    get_player_shooting = 1
-    get_player_ballcntrl = 1
+    get_player_info = 0
+    get_player_shooting = 0
+    get_player_ballcntrl = 0
+    get_teams = 1
     
     #get current path
     curr_path = os.getcwd()
@@ -88,5 +102,7 @@ def main():
         save_file = 'tables/player_ballcontrol.csv'
         get_player_stats_tbl(curr_path, columns, raw_data_file, save_file)
     
+    if get_teams and os.path.isfile(curr_path + '/tables/player_info.csv'):
+        get_teams_tbl(curr_path)
     
 main()
