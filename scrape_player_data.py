@@ -30,7 +30,7 @@ def parse_name(string):
     fn_flag = 0
     for idx in range(len(temp_list)): #loop through list, select first and last name, remove \n chars, 
         if len(temp_list[idx]) > 0 and temp_list[idx]!='\n\n' and temp_list[idx] != '\n':
-            #check for upper limit as there are some text errors which cause super long strings
+            #check for upper limit as there are some text errors which cause super long strings (only a few cases)
             if len(temp_list[idx]) > 50:  #just use first three letters of first name
                 end_idx = 4
             else:
