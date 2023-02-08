@@ -2845,7 +2845,7 @@
 2843,Kennisha-Shanice Luberisse,saintmarys,2017,J,14,20.0,20.0,33.0,1040
 2844,Shanieka Wood,saintmarys,2017,J,21,20.0,20.0,26.5,1278
 2845,Courtney Cain-Nordin,saintmarys,2017,S,22,19.0,0.0,15.3,1516
-2846,Aliesja MacDonald,saintmarys,2017,1s,,1.0,0.0,0.0,1517
+2846,Aliesja MacDonald,saintmarys,2017,1s,RS,1.0,0.0,0.0,1517
 2847,Caroline Hrabinski,stfx,2017,,5,20.0,4.0,18.1,1518
 2848,Korenda Colley,stfx,2017,,6,18.0,17.0,20.4,28
 2849,Lexy Parkin,stfx,2017,,7,0.0,0.0,0.0,1519
@@ -3685,8 +3685,8 @@
 3683,Isabelle Dion,ottawa,2018,,14,23.0,1.0,10.9,1145
 3684,Anne Carr,ottawa,2018,,15,10.0,1.0,9.7,1376
 3685,Brigitte Lefebvre-Okankwu,ottawa,2018,,21,21.0,20.0,24.0,1823
-3686,Natalie DiMaio,queens,2018,,,0.0,0.0,0.0,1824
-3687,Julia DiMaio,queens,2018,,,0.0,0.0,0.0,1825
+3686,Natalie DiMaio,queens,2018,,#!,0.0,0.0,0.0,1824
+3687,Julia DiMaio,queens,2018,,##,0.0,0.0,0.0,1825
 3688,Megan Saftich,queens,2018,,4,19.0,0.0,4.4,1378
 3689,Emma Ritcey,queens,2018,,5,22.0,21.0,27.2,1608
 3690,Sarah Saftich,queens,2018,,6,23.0,0.0,12.3,898
@@ -4071,7 +4071,7 @@
 4069,Samantha Minicucci,stfx,2019,,21,18.0,15.0,19.4,508
 4070,Jamie McCarron,stfx,2019,,22,19.0,15.0,28.2,1282
 4071,Leah Fahey,stfx,2019,,24,17.0,3.0,16.4,1525
-4072,Shania Graham,stfx,2019,,,0.0,0.0,0.0,1970
+4072,Shania Graham,stfx,2019,,RS,0.0,0.0,0.0,1970
 4073,Mikaela Dodig,unb,2019,,4,20.0,20.0,31.1,1527
 4074,Marley Curwin,unb,2019,,5,19.0,0.0,8.7,1971
 4075,Ja'Yon Leak,unb,2019,F,6,17.0,17.0,21.1,1972
@@ -4296,8 +4296,8 @@
 4294,Anne Carr,ottawa,2019,,15,22.0,3.0,16.3,1376
 4295,Brigitte Lefebvre-Okankwu,ottawa,2019,,21,23.0,21.0,25.9,1823
 4296,Sarah Besselink,ottawa,2019,,22,23.0,23.0,26.7,895
-4297,Natalie DiMaio,queens,2019,1s,,0.0,0.0,0.0,1824
-4298,Julia DiMaio,queens,2019,1s,,0.0,0.0,0.0,1825
+4297,Natalie DiMaio,queens,2019,1s,",",0.0,0.0,0.0,1824
+4298,Julia DiMaio,queens,2019,1s,.,0.0,0.0,0.0,1825
 4299,Megan Saftich,queens,2019,3r,4,22.0,0.0,12.0,1378
 4300,Emma Ritcey,queens,2019,3r,5,23.0,22.0,26.2,1608
 4301,Claire Litchfield,queens,2019,1s,6,10.0,0.0,5.9,2055
@@ -5554,7 +5554,7 @@
 5552,Mikayla McFarlane,queens,2022,,13,10.0,0.0,5.3,2567
 5553,Willo Thomas,queens,2022,,14,8.0,0.0,4.5,2568
 5554,Sophie d Goede,queens,2022,,15,11.0,9.0,29.0,1827
-5555,Rachel Neumann,queens,2022,,,0.0,0.0,0.0,2569
+5555,Rachel Neumann,queens,2022,,1A,0.0,0.0,0.0,2569
 5556,Abbey Hetherington,queens,2022,,22,9.0,0.0,7.7,2059
 5557,Bridget Mulholland,queens,2022,,23,14.0,5.0,18.1,1611
 5558,Jada Poon-TIp,toronto,2022,F,0,15.0,15.0,24.7,2570
@@ -5728,9 +5728,9 @@
 5726,Jamie Lalor,mountroyal,2022,,13,14.0,12.0,30.4,2337
 5727,Nora Luca,mountroyal,2022,,14,1.0,0.0,6.0,2657
 5728,Brittany Janzen,mountroyal,2022,,15,11.0,2.0,8.5,2092
-5729,Maddy Stata-Luzentales,mountroyal,2022,,,0.0,0.0,0.0,2658
-5730,Alex McLaren,mountroyal,2022,,,0.0,0.0,0.0,2659
-5731,Maggie Smith,mountroyal,2022,,,0.0,0.0,0.0,2660
+5729,Maddy Stata-Luzentales,mountroyal,2022,,P,0.0,0.0,0.0,2658
+5730,Alex McLaren,mountroyal,2022,,PP,0.0,0.0,0.0,2659
+5731,Maggie Smith,mountroyal,2022,,R,0.0,0.0,0.0,2660
 5732,Madeleine Tell,regina,2022,J,1,8.0,2.0,19.5,2661
 5733,Eden Wells,regina,2022,F,2,2.0,0.0,15.0,2662
 5734,Dayna Pearce,regina,2022,S,3,16.0,10.0,19.0,1911

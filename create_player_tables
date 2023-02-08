@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 import os
 
 
@@ -29,30 +30,30 @@ ASSUMES NO TWO PLAYERS HAVE THE SAME NAME :(
     NEED TO CHANGE THIS LATER
 CAN ALSO DROP NAME COLUMN FROM FINAL TABLE
 '''
-def get_player_stats_tbl(curr_path, columns, raw_data_file, save_file):
-    #load general info of all players from each season from raw csv
+def get_player_stats_tbl(curr_path, columns, raw_data_file):
+    #load stats of all players from each season from raw csv
     #keep all columns from raw csv for this table
-    player_info= pd.read_csv(curr_path + '/raw_csv_files/' + raw_data_file, 
+    player_stats= pd.read_csv(curr_path + '/raw_csv_files/' + raw_data_file, 
                                usecols=columns)
     
     #load players.csv to get corresponding player id's for each row
     players_df = pd.read_csv(curr_path + '/tables/players.csv', index_col='player_id')
 
     #create player id column in info df
-    player_info['player_id'] = 0
+    player_stats['player_id'] = 0
     
     #iterate through rows and get correct player id from playerdf and assign to each player instance
     for index, row in players_df.iterrows():
         #get name of player in curren row
         name = row['NAME']
         #select row with column 'NAME' equal to name of player in current row
-        player_row = player_info.loc[player_info['NAME'] == name]
+        #player_row = player_stats.loc[player_stats['NAME'] == name]
         id = index #id is index since it was assigned as the row number in players_df
         #assign id to all rows in player_info with 'NAME' equal to name of player in current row
-        player_info['player_id'].mask(player_info['NAME'] == name, id, inplace=True)
+        player_stats['player_id'].mask(player_stats['NAME'] == name, id, inplace=True)
 
-    #save table to csv
-    player_info.to_csv(save_file)
+    return player_stats
+
 
 
 '''
@@ -73,10 +74,10 @@ def get_teams_tbl(curr_path):
 def main():
     #set variables to decide which tables are being created
     get_players = 0
-    get_player_info = 0
+    get_player_info = 1
     get_player_shooting = 0
     get_player_ballcntrl = 0
-    get_teams = 1
+    get_teams = 0
     
     #get current path
     curr_path = os.getcwd()
@@ -87,20 +88,28 @@ def main():
         columns = ['NAME', 'TEAM', 'SEASON','PLYR_YR', 'NUM', 'GP', 'GS', 'MIN/G']
         raw_data_file = 'player_stats_info.csv'
         save_file = 'tables/player_info.csv'
-        get_player_stats_tbl(curr_path, columns, raw_data_file, save_file)
+        player_info = get_player_stats_tbl(curr_path, columns, raw_data_file)
+        
+        #replace any strings in NUM column containing non numbers with NaN
+        player_info['NUM'] = player_info['NUM'].replace(regex='[!-/:-z]', value=np.nan)
+        
+        #save table to csv
+        player_info.to_csv(save_file)
         
     if get_player_shooting:
         columns = ['NAME', 'SEASON', 'FGM', 'FGA', 'FG%', 
             '3FGM', '3FGA', '3FG%', 'FTM','FTA', 'FT%', 'PPG']
         raw_data_file = 'player_stats_shooting.csv'
         save_file = 'tables/player_shooting.csv'
-        get_player_stats_tbl(curr_path, columns, raw_data_file, save_file)
+        player_shooting = get_player_stats_tbl(curr_path, columns, raw_data_file)
+        player_shooting.to_csv(save_file)
         
     if get_player_ballcntrl:
         columns = ['NAME', 'SEASON', 'DREB/G', 'OREB/G', 'REB/G', 'PF/G', 'A/G', 'TO/G', 'A/TO', 'STL/G', 'BLK/G']
         raw_data_file = 'player_stats_ball_control.csv'
         save_file = 'tables/player_ballcontrol.csv'
-        get_player_stats_tbl(curr_path, columns, raw_data_file, save_file)
+        player_ballcntrl = get_player_stats_tbl(curr_path, columns, raw_data_file)
+        player_ballcntrl.to_csv(save_file)
     
     if get_teams and os.path.isfile(curr_path + '/tables/player_info.csv'):
         get_teams_tbl(curr_path)
