@@ -52,6 +52,10 @@ def get_player_stats_tbl(curr_path, columns, raw_data_file):
         #assign id to all rows in player_info with 'NAME' equal to name of player in current row
         player_stats['player_id'].mask(player_stats['NAME'] == name, id, inplace=True)
 
+    #drop NAME column from table so it's not stored in 4 different tables
+    # can join with players table if needed
+    player_stats = player_stats.drop(['NAME'], axis=1)
+    
     return player_stats
 
 
@@ -70,13 +74,13 @@ def get_teams_tbl(curr_path):
     teams_tbl.to_csv('tables/teams.csv', index_label='team_id')
 
 
-
+#TODO remove name column from stats tables (redundant), then re-create sql database
 def main():
     #set variables to decide which tables are being created
     get_players = 0
     get_player_info = 1
-    get_player_shooting = 0
-    get_player_ballcntrl = 0
+    get_player_shooting = 1
+    get_player_ballcntrl = 1
     get_teams = 0
     
     #get current path
