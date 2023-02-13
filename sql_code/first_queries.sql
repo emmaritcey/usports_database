@@ -89,3 +89,4 @@ WHERE season = 2014 AND
 				FROM player_shooting NATURAL JOIN players
 				WHERE season = 2015);
                 
+SHOW TABLES;

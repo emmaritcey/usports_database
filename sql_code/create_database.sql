@@ -17,10 +17,11 @@ OPTIONALLY ENCLOSED BY '"'
 LINES TERMINATED BY '\n'
 IGNORE 1 ROWS;
 
+DROP TABLE players;
+
 #create players info table and load data to table
 CREATE TABLE player_info(
 	row_identifier int NOT NULL,
-    NAME varchar(50) NOT NULL,
     TEAM varchar(20) NOT NULL,
     SEASON int NOT NULL,
     PLYR_YR	varchar(10),
@@ -42,16 +43,14 @@ OPTIONALLY ENCLOSED BY '"'
 LINES TERMINATED BY '\n'
 IGNORE 1 ROWS
 #if NUM or PLYR_YR entry loaded in as empty string, set value to NULL
-(row_identifier, NAME, TEAM, SEASON, @vPLYR_YR, @vNUM, GP, GS, MIN_G, player_id)
+(row_identifier, TEAM, SEASON, @vPLYR_YR, @vNUM, GP, GS, MIN_G, player_id)
 SET PLYR_YR = NULLIF(@vPLYR_YR, '');
 SET NUM = NULLIF(@vNUM,'');
 
-DROP TABLE player_shooting;
 
 #create players shootings stats table and load data to table
 CREATE TABLE player_shooting(
 	row_identifier int NOT NULL,
-    NAME varchar(50) NOT NULL,
     SEASON int NOT NULL,
     FGM float,
     FGA float,
@@ -81,7 +80,6 @@ IGNORE 1 ROWS;
 #create players ball control stats table and load data to table
 CREATE TABLE player_ballcontrol(
 	row_identifier int NOT NULL,
-    NAME varchar(50) NOT NULL,
     SEASON int NOT NULL,
     DREB_G float,
     OREB_G float,
@@ -105,4 +103,11 @@ FIELDS TERMINATED BY ','
 OPTIONALLY ENCLOSED BY '"'
 LINES TERMINATED BY '\n'
 IGNORE 1 ROWS;
-    
+
+SHOW FULL processlist;
+
+kill 62;
+
+
+
+
