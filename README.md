@@ -1,5 +1,6 @@
-## Info
-This repository contains code to scrape data from USports women's basketball website, save raw data into csv files, and clean data into new csv files
+## USports Women's Basketball Data
+This repository contains code to analyze and visualize USports women's basketball data.
+Code includes scraping data from USports women's basketball website, saving raw data into csv files, cleaning data into new csv files, creating a relational database
 
 ## Requirements
 To install required libraries, run: pip install -r requirements.txt
