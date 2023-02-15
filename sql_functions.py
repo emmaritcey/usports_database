@@ -76,11 +76,11 @@ def execute_query(connection, query, multi_statement=False):
 '''
 function to read data from the data (for queries like SELECT)
 '''
-def read_query(connection, query):
+def read_query(connection, query, var):
     cursor = connection.cursor()
     result = None
     try:
-        cursor.execute(query)
+        cursor.execute(query, var)
         result = cursor.fetchall()
         return result
     except Error as err:
