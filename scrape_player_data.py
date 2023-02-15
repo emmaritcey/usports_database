@@ -13,7 +13,7 @@ from urllib.request import urlopen as uReq
 import pandas as pd
 import numpy as np
 
-STAT_TYPE = 'shooting' #either 'shooting', 'ball control', or 'general'
+STAT_TYPE = 'ball control' #either 'shooting', 'ball control', or 'general'
 TEAMS =  ['acadia', 'capebreton', 'dalhousie', 'memorial', "saintmarys", 'stfx', 'unb', 'upei',
         'bishops', 'concordia', 'laval', 'mcgill', 'uqam', 'algoma', 'brock', 'carleton', 
         'guelph', 'lakehead', 'laurentian', 'laurier', 'mcmaster', 'nipissing', 'ontariotech', 
@@ -90,7 +90,7 @@ def get_player_stats(headers, table_index, fileName):
                 players = players_tbl.findAll('tr') #get all url's in table 
         
                 #loop through each player (each row of the table)
-                for player in players[1:len(players)-3]:
+                for player in players[1:len(players)-2]:
                     #print(player)
                     stats = player.find_all("td") #extract text from every column item/table data
 
