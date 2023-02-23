@@ -167,6 +167,6 @@ def main():
     
     #populate entities with data from csv files
     populate_entities(connection)
-    print('test 2')
+    print('test')
     
 main()
