@@ -74,13 +74,12 @@ def get_teams_tbl(curr_path):
     teams_tbl.to_csv('tables/teams.csv', index_label='team_id')
 
 
-#TODO remove name column from stats tables (redundant), then re-create sql database
 def main():
     #set variables to decide which tables are being created
-    get_players = 1
-    get_player_info = 1
-    get_player_shooting = 1
-    get_player_ballcntrl = 1
+    get_players = 0
+    get_player_info = 0
+    get_player_shooting = 0
+    get_player_ballcntrl = 0
     get_teams = 1
     
     #get current path
