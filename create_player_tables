@@ -59,6 +59,30 @@ def get_player_stats_tbl(curr_path, columns, raw_data_file):
     return player_stats
 
 
+def assign_conferences(teams_tbl):
+    aus = ['acadia', 'capebreton', 'dalhousie', 'memorial', "saintmarys", 'stfx', 'unb', 'upei']
+    rseq = ["bishops", 'concordia', 'laval', 'mcgill', 'uqam']
+    oua = ['algoma', 'brock', 'carleton', 'guelph', 'lakehead', 'laurentian', 'laurier', 'mcmaster',
+           'nipissing', 'ontariotech', 'ottawa', 'queens', 'ryerson', 'toronto', 'torontometropolitan',
+           'waterloo', 'western', 'windsor', 'york']
+    canwest = ['alberta', 'brandon', 'calgary', 'lethbridge', 'macewan', 'manitoba', 'mountroyal', 
+               'regina', 'saskatchewan', 'thompsonrivers', 'trinitywestern', 'ubc', 'ubcokanagan',
+               'ufv', 'unbc', 'victoria', 'winnipeg']
+    # create a list of our conditions
+    conditions = [
+        (teams_tbl['TEAM'].isin(aus)),
+        (teams_tbl['TEAM'].isin(rseq)),
+        (teams_tbl['TEAM'].isin(oua)),
+        (teams_tbl['TEAM'].isin(canwest))
+        ]
+
+    # create a list of the values we want to assign for each condition
+    values = ['AUS', 'RSEQ', 'OUA', 'CANWEST']
+
+    # create a new column and use np.select to assign values to it using our lists as arguments
+    teams_tbl['CONFERENCE'] = np.select(conditions, values)
+    
+    return teams_tbl
 
 '''
 Create table with all team names and team id's
@@ -69,9 +93,11 @@ def get_teams_tbl(curr_path):
     team_names = pd.read_csv(curr_path + '/tables/player_info.csv', usecols=['TEAM'])
     #remove duplicate names, only keep one row for each player
     teams_tbl = team_names.drop_duplicates(ignore_index=True)
+    
+    teams_tbl = assign_conferences(teams_tbl)
 
     #save to csv file where index is player id
-    teams_tbl.to_csv('tables/teams.csv', index_label='team_id')
+    teams_tbl.to_csv('tables/teams.csv', index=False)
 
 
 def main():

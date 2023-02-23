@@ -3,7 +3,7 @@ from sql_functions import create_server_connection, create_database, create_db_c
 
 def initialize_database():
     #create connection
-    pw = "******" #enter password to root
+    pw = "Queens2021!" #enter password to root
     connection = create_server_connection("localhost", "root", pw)
     
     #create usports database
@@ -22,7 +22,14 @@ def create_entities(connection):
         CREATE TABLE players(
             player_id int NOT NULL,
             NAME varchar(50) NOT NULL,
-            primary key (player_id)
+            PRIMARY KEY (player_id)
+            );
+        """
+    create_teams_table = """
+        CREATE TABLE teams(
+            name varchar(20) NOT NULL,
+            conference varchar(10),
+            PRIMARY KEY (name)
             );
         """
     create_player_info_table ="""
@@ -36,6 +43,7 @@ def create_entities(connection):
             games_started int,
             minutes_pgame float,
             PRIMARY KEY (player_id, season),
+            FOREIGN KEY (team) REFERENCES teams(name),
             FOREIGN KEY (player_id) REFERENCES players(player_id)
             ON DELETE CASCADE #if a player is deleted from players table, then they are deleted from player_info table
             ON UPDATE CASCADE #if a player is updated in players table, then corresponding entries in player_info table are updated
@@ -82,6 +90,7 @@ def create_entities(connection):
     """
     
     execute_query(connection, create_player_table)
+    execute_query(connection, create_teams_table)
     execute_query(connection, create_player_info_table)
     execute_query(connection, create_player_shooting_table)
     execute_query(connection, create_player_ballcontrol_table)
@@ -96,6 +105,15 @@ def populate_entities(connection):
         LINES TERMINATED BY '\n'
         IGNORE 1 ROWS;
     """
+    
+    load_teams = """
+        LOAD DATA LOCAL INFILE '/Users/emmaritcey/Documents/basketball_research/usports_database/tables/teams.csv'
+        INTO TABLE teams
+        FIELDS TERMINATED BY ','
+        OPTIONALLY ENCLOSED BY '"'
+        LINES TERMINATED BY '\n'
+        IGNORE 1 ROWS;
+        """
 
     # if player year or number entry is loaded in as empty string, set value to NULL
     load_player_info = """
@@ -129,9 +147,11 @@ def populate_entities(connection):
         """
         
     execute_query(connection, load_players)
+    execute_query(connection, load_teams)
     execute_query(connection, load_player_info)
     execute_query(connection, load_player_shooting)
     execute_query(connection, load_player_ballcontrol)
+
 
 def main():
     

@@ -88,4 +88,5 @@ WHERE season = 2014 AND
 	name NOT IN(SELECT name
 				FROM player_shooting NATURAL JOIN players
 				WHERE season = 2015);
-                
+               
+

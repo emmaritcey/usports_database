@@ -13,11 +13,11 @@ from urllib.request import urlopen as uReq
 import pandas as pd
 import numpy as np
 
-STAT_TYPE = 'general' #either 'shooting', 'ball control', or 'general'
+STAT_TYPE = 'ball control' #either 'shooting', 'ball control', or 'general'
 TEAMS =  ['acadia', 'capebreton', 'dalhousie', 'memorial', "saintmarys", 'stfx', 'unb', 'upei',
         'bishops', 'concordia', 'laval', 'mcgill', 'uqam', 'algoma', 'brock', 'carleton', 
         'guelph', 'lakehead', 'laurentian', 'laurier', 'mcmaster', 'nipissing', 'ontariotech', 
-        'ottawa', 'queens', 'toronto', 'torontometropolitan', 'waterloo', 'western', 'windsor', 
+        'ottawa', 'queens', 'ryerson', 'toronto', 'torontometropolitan', 'waterloo', 'western', 'windsor', 
         'york', 'alberta', 'brandon', 'calgary', 'lethbridge', 'macewan', 'manitoba', 'mountroyal', 
         'regina', 'saskatchewan', 'thompsonrivers', 'trinitywestern', 'ubc', 'ubcokanagan',
         'ufv', 'unbc', 'victoria', 'winnipeg']
