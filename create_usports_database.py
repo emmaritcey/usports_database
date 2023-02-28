@@ -167,6 +167,7 @@ def main():
     
     #populate entities with data from csv files
     populate_entities(connection)
-    print('test 2')
     
 main()
+
+#TODO: add in creating and populating team split stat tables (code in sql_testing notebook)
