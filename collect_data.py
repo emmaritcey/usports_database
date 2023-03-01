@@ -1,6 +1,6 @@
 
 '''
-Script runs all of the data scraping, cleaning, and creating of SQL database
+Script runs all of the data scraping and cleaning
 '''
 
 import preprocessUtils.scrape_player_data as scrape_player_data, preprocessUtils.scrape_team_data as scrape_team_data
