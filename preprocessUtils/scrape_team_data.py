@@ -1,13 +1,9 @@
-import re
 import requests
-import pandas as pd
-import numpy as np
 from bs4 import BeautifulSoup
 from urllib.request import urlopen as uReq
-from collections import defaultdict
 import csv
 
-from scraping_helpers import parse_shooting, parse_values_team
+from preprocessUtils.scraping_helpers import parse_shooting, parse_values_team
 
 
 TEAMS =  ['acadia', 'capebreton', 'dalhousie', 'memorial', "saintmarys", 'stfx', 'unb', 'upei',
@@ -17,9 +13,9 @@ TEAMS =  ['acadia', 'capebreton', 'dalhousie', 'memorial', "saintmarys", 'stfx',
     'york', 'alberta', 'brandon', 'calgary', 'lethbridge', 'macewan', 'manitoba', 'mountroyal', 
     'regina', 'saskatchewan', 'thompsonrivers', 'trinitywestern', 'ubc', 'ubcokanagan',
     'ufv', 'unbc', 'victoria', 'winnipeg']
+TEAMS = ['acadia']
 YEARS = ['2009-10', '2010-11', '2011-12', '2012-13', '2013-14', '2014-15', '2015-16', '2016-17', '2017-18', '2018-19', '2019-20', '2021-22', '2022-23']
-
-STAT_TYPE = 'split stats'
+YEARS = ['2022-23']
 
 def get_team_splitstats(headers, fileName):
     print("getting links...")
@@ -39,8 +35,6 @@ def get_team_splitstats(headers, fileName):
             soup = BeautifulSoup(raw_html, 'html.parser') #create parser called soup that uses contents of raw_html
             tables = soup.findAll('table') #tables contains all table elements from current page
             
-            max_len = 0
-            index = 0
             
             if len(tables) > 0: #check that this team has data or current year
                 #some split stat tables are in different locations, find it by finding table with no url links
@@ -89,15 +83,12 @@ def get_team_splitstats(headers, fileName):
             wrtr.writerow(row)
             myfile.flush()                
     
-def main():
-    
-    
-    if STAT_TYPE == 'split stats':
-        headers = ['SEASON', 'TEAM', 'SPLIT', 'GP', 'FGM', 'FGA', 'FG%', '3FGM', '3FGA','3FG%', 'FTM', 'FTA', 'FT%', 
-                    'DREB/G', 'OREB/G', 'REB/G', 'A/G','TO/G', 'STL/G', 'BLK/G','PF/G', 'PPG', 'OFF_EFF', 'NET_EFF']
-        fileName = 'raw_csv_files/team_splitstats.csv'
-        get_team_splitstats(headers, fileName)
-        
-        
-main()
-        
+
+def run_scraping(stat_type, data_save_path):
+    for stat in stat_type:
+        if stat == 'splitstat':
+            headers = ['SEASON', 'TEAM', 'SPLIT', 'GP', 'FGM', 'FGA', 'FG%', '3FGM', '3FGA','3FG%', 'FTM', 'FTA', 'FT%', 
+                        'DREB/G', 'OREB/G', 'REB/G', 'A/G','TO/G', 'STL/G', 'BLK/G','PF/G', 'PPG', 'OFF_EFF', 'NET_EFF']
+            fileName = data_save_path + 'team_splitstats.csv'
+            fileName = data_save_path + 'test.csv'
+            get_team_splitstats(headers, fileName)

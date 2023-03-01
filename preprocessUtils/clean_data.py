@@ -14,7 +14,8 @@ def get_players_tbl(curr_path):
     players_tbl = player_names.drop_duplicates(ignore_index=True)
 
     #save to csv file where index is player id
-    players_tbl.to_csv('tables/players.csv', index_label='player_id')
+    #players_tbl.to_csv(curr_path + '/tables/players.csv', index_label='player_id')
+    players_tbl.to_csv(curr_path + '/tables/players_test.csv', index_label='player_id')
 
 
 '''
@@ -97,50 +98,45 @@ def get_teams_tbl(curr_path):
     teams_tbl = assign_conferences(teams_tbl)
 
     #save to csv file where index is player id
-    teams_tbl.to_csv('tables/teams.csv', index=False)
+    #teams_tbl.to_csv(curr_path + '/tables/teams.csv', index=False)
+    teams_tbl.to_csv(curr_path + '/tables/teams_test.csv', index=False)
 
 
-def main():
-    #set variables to decide which tables are being created
-    get_players = 0
-    get_player_info = 0
-    get_player_shooting = 0
-    get_player_ballcntrl = 0
-    get_teams = 1
+def create_tables(tables, root_path):
     
-    #get current path
-    curr_path = os.getcwd()
+    for table in tables:
+        if table == 'players':
+            get_players_tbl(root_path)
+        if table == 'player_info':
+            columns = ['NAME', 'TEAM', 'SEASON','PLYR_YR', 'NUM', 'GP', 'GS', 'MIN/G']
+            raw_data_file = 'player_stats_info.csv'
+            save_file = root_path + '/tables/player_info.csv'
+            save_file = root_path + '/tables/test_info.csv'
+            player_info = get_player_stats_tbl(root_path, columns, raw_data_file)
+            
+            #replace any strings in NUM column containing non numbers with NaN
+            player_info['NUM'] = player_info['NUM'].replace(regex='[!-/:-z]', value=np.nan)
+            
+            #save table to csv
+            player_info.to_csv(save_file, index=False)
+            
+        if table == 'player_shooting':
+            columns = ['NAME', 'SEASON', 'FGM', 'FGA', 'FG%', 
+                '3FGM', '3FGA', '3FG%', 'FTM','FTA', 'FT%', 'PPG']
+            raw_data_file = 'player_stats_shooting.csv'
+            save_file = root_path + '/tables/player_shooting.csv'
+            save_file = root_path + '/tables/test_shooting.csv'
+            player_shooting = get_player_stats_tbl(root_path, columns, raw_data_file)
+            player_shooting.to_csv(save_file, index=False)
+            
+        if table == 'player_ballcntrl':
+            columns = ['NAME', 'SEASON', 'DREB/G', 'OREB/G', 'REB/G', 'PF/G', 'A/G', 'TO/G', 'A/TO', 'STL/G', 'BLK/G']
+            raw_data_file = 'player_stats_ball_control.csv'
+            save_file = root_path + '/tables/player_ballcontrol.csv'
+            save_file = root_path + '/tables/test_bc.csv'
+            player_ballcntrl = get_player_stats_tbl(root_path, columns, raw_data_file)
+            player_ballcntrl.to_csv(save_file, index=False)
+        
+        if table == 'teams' and os.path.isfile(root_path + '/tables/player_info.csv'):
+            get_teams_tbl(root_path)
     
-    if get_players:
-        get_players_tbl(curr_path)
-    if get_player_info:
-        columns = ['NAME', 'TEAM', 'SEASON','PLYR_YR', 'NUM', 'GP', 'GS', 'MIN/G']
-        raw_data_file = 'player_stats_info.csv'
-        save_file = 'tables/player_info.csv'
-        player_info = get_player_stats_tbl(curr_path, columns, raw_data_file)
-        
-        #replace any strings in NUM column containing non numbers with NaN
-        player_info['NUM'] = player_info['NUM'].replace(regex='[!-/:-z]', value=np.nan)
-        
-        #save table to csv
-        player_info.to_csv(save_file, index=False)
-        
-    if get_player_shooting:
-        columns = ['NAME', 'SEASON', 'FGM', 'FGA', 'FG%', 
-            '3FGM', '3FGA', '3FG%', 'FTM','FTA', 'FT%', 'PPG']
-        raw_data_file = 'player_stats_shooting.csv'
-        save_file = 'tables/player_shooting.csv'
-        player_shooting = get_player_stats_tbl(curr_path, columns, raw_data_file)
-        player_shooting.to_csv(save_file, index=False)
-        
-    if get_player_ballcntrl:
-        columns = ['NAME', 'SEASON', 'DREB/G', 'OREB/G', 'REB/G', 'PF/G', 'A/G', 'TO/G', 'A/TO', 'STL/G', 'BLK/G']
-        raw_data_file = 'player_stats_ball_control.csv'
-        save_file = 'tables/player_ballcontrol.csv'
-        player_ballcntrl = get_player_stats_tbl(curr_path, columns, raw_data_file)
-        player_ballcntrl.to_csv(save_file, index=False)
-    
-    if get_teams and os.path.isfile(curr_path + '/tables/player_info.csv'):
-        get_teams_tbl(curr_path)
-    
-main()

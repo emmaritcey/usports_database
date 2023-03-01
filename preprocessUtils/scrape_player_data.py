@@ -4,17 +4,12 @@ scrape each data type individually to separate csv files (shooting, ball control
 YEARS: indicates years to scrape data from
 '''
 
-
-import re
 import requests
 from bs4 import BeautifulSoup
 import csv
 from urllib.request import urlopen as uReq
-import pandas as pd
-import numpy as np
-from scrape_player_data import parse_values_player, parse_shooting, parse_name
+from preprocessUtils.scraping_helpers import parse_values_player, parse_shooting, parse_name
 
-STAT_TYPE = 'ball control' #either 'shooting', 'ball control', or 'general'
 TEAMS =  ['acadia', 'capebreton', 'dalhousie', 'memorial', "saintmarys", 'stfx', 'unb', 'upei',
         'bishops', 'concordia', 'laval', 'mcgill', 'uqam', 'algoma', 'brock', 'carleton', 
         'guelph', 'lakehead', 'laurentian', 'laurier', 'mcmaster', 'nipissing', 'ontariotech', 
@@ -22,13 +17,13 @@ TEAMS =  ['acadia', 'capebreton', 'dalhousie', 'memorial', "saintmarys", 'stfx',
         'york', 'alberta', 'brandon', 'calgary', 'lethbridge', 'macewan', 'manitoba', 'mountroyal', 
         'regina', 'saskatchewan', 'thompsonrivers', 'trinitywestern', 'ubc', 'ubcokanagan',
         'ufv', 'unbc', 'victoria', 'winnipeg']
+TEAMS = ['acadia']
 
 YEARS = ['2009-10', '2010-11', '2011-12', '2012-13', '2013-14', '2014-15', '2015-16', '2016-17', '2017-18', '2018-19', '2019-20', '2021-22', '2022-23']
+YEARS = ['2022-23']
 
 
-
-def get_player_stats(headers, table_index, fileName):
-    print("getting player stats...")
+def get_player_stats(stat_type, headers, table_index, fileName):
 
     base_url = 'https://universitysport.prestosports.com/sports/wbkb/'
     end_url = '?view=lineup&r=0&pos=sh'
@@ -55,7 +50,7 @@ def get_player_stats(headers, table_index, fileName):
                     #print(player)
                     stats = player.find_all("td") #extract text from every column item/table data
 
-                    if STAT_TYPE == 'general':
+                    if stat_type == 'general':
                         number = stats[0].text
 
                         #get name
@@ -71,7 +66,7 @@ def get_player_stats(headers, table_index, fileName):
                         
                         rows.append([name, team_name, season_year, player_year, number, gp, gs, min_pg])
                         
-                    elif STAT_TYPE == 'shooting':
+                    elif stat_type == 'shooting':
                         name = parse_name(stats[1].text) #name is long string with spaces and new line characters
                         season_year = int(year[0:2]+year[-2:]) #year is by year that Natty Championship is held
 
@@ -85,7 +80,7 @@ def get_player_stats(headers, table_index, fileName):
         
                         rows.append([name, season_year, fgm, fga, fg_pct, fgm3, fga3, fg3_pct, ftm, fta, ft_pct, ppg])
                         
-                    elif STAT_TYPE == 'ball control':
+                    elif stat_type == 'ball control':
                         name = parse_name(stats[1].text) #name is long string with spaces and new line characters
                         season_year = int(year[0:2]+year[-2:]) #year is by year that Natty Championship is held
                         
@@ -109,24 +104,27 @@ def get_player_stats(headers, table_index, fileName):
            myfile.flush() # whenever you want
 
 
-def main():
-    
-    if STAT_TYPE == 'general':
-        headers = ['NAME', 'TEAM', 'SEASON', 'PLYR_YR', 'NUM', 'GP', 'GS', 'MIN/G']
-        table_index = 3
-        fileName = 'raw_csv_files/player_stats_info.csv'
-        get_player_stats(headers, table_index, fileName)
-    elif STAT_TYPE == 'shooting':
-        headers = ['NAME', 'SEASON', 'FGM', 'FGA', 'FG%', '3FGM', '3FGA','3FG%', 'FTM', 'FTA', 'FT%', 'PPG']
-        table_index = 3
-        fileName = 'raw_csv_files/player_stats_shooting.csv'
-        get_player_stats(headers, table_index, fileName)
-    elif STAT_TYPE == 'ball control':
-        headers = ['NAME', 'SEASON', 'DREB/G', 'OREB/G', 'REB/G', 'PF/G', 'A/G','TO/G', 'A/TO', 'STL/G', 'BLK/G']
-        table_index = 4
-        fileName = 'raw_csv_files/player_stats_ball_control.csv'
-        get_player_stats(headers, table_index, fileName)
+def run_scraping(stat_type, data_save_path):
+    for stat in stat_type:
+        if stat == 'general':
+            headers = ['NAME', 'TEAM', 'SEASON', 'PLYR_YR', 'NUM', 'GP', 'GS', 'MIN/G']
+            table_index = 3
+            fileName = data_save_path + 'player_stats_info.csv'
+            fileName = data_save_path + 'info_test.csv'
+            print("getting player info  stats...")
+            get_player_stats(stat, headers, table_index, fileName)
+        elif stat == 'shooting':
+            headers = ['NAME', 'SEASON', 'FGM', 'FGA', 'FG%', '3FGM', '3FGA','3FG%', 'FTM', 'FTA', 'FT%', 'PPG']
+            table_index = 3
+            fileName = data_save_path + 'player_stats_shooting.csv'
+            fileName = data_save_path + 'sh_test.csv'
+            print("getting player shooting stats...")
+            get_player_stats(stat, headers, table_index, fileName)
+        elif stat == 'ball control':
+            headers = ['NAME', 'SEASON', 'DREB/G', 'OREB/G', 'REB/G', 'PF/G', 'A/G','TO/G', 'A/TO', 'STL/G', 'BLK/G']
+            table_index = 4
+            fileName = data_save_path + 'player_stats_ball_control.csv'
+            fileName = data_save_path + 'bc_test.csv'
+            print("getting player ball control stats...")
+            get_player_stats(stat, headers, table_index, fileName)
         
-main()
-
-#TODO: call helper functions (parsing) from scraping_helpers.py

@@ -153,8 +153,7 @@ def populate_entities(connection):
     execute_query(connection, load_player_ballcontrol)
 
 
-def main():
-    
+def setupDB():
     #connect to server and create database
     connection = initialize_database()
     
@@ -167,7 +166,15 @@ def main():
     
     #populate entities with data from csv files
     populate_entities(connection)
+
+
+
+def main():
+    setupDB()
+
     
-main()
+if __name__ == "__main__":
+    main()
 
 #TODO: add in creating and populating team split stat tables (code in sql_testing notebook)
+#TODO: change so that database name is instantiated in main so it's more easilty changed
