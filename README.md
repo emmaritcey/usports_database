@@ -5,24 +5,18 @@ Code includes scraping data from USports women's basketball website, saving raw 
 ## Requirements
 To install required libraries, run: pip install -r requirements.txt
 
-## Data Scraping
-To scrape individual player data run: scrape_player_data.py \
-&emsp; - global variables: \
-&emsp; &emsp; STAT_TYPE: determines which player data to collect, options are 'general info', 'shooting stats', 'ball control stats'\
-&emsp; &emsp; TEAMS: list of teams to collect player data from \
-&emsp; &emsp; YEARS: years/seasons to collect player data from \
-&emsp; - saves raw data into csv files\
-&emsp; - general info data: missing values in 'NUM' and 'PLYR_YR' columns set to np.nan, missing data ('-') of numeric column set to 0
-
-## Data Cleaning
-To create tables for each type of player data run: create_player_tables.py\
-&emsp; - uses raw data files to create tables\
-&emsp; - assigns each player a unique player_id that's consistent across all tables
+## Data Scraping and Cleaning
+To scrape individual player data run: collect_data.py \
+* saves data into csv files
+* general info data: missing values in 'NUM' and 'PLYR_YR' columns set to np.nan, missing data ('-') of numeric column set to 0
+* variables at beginning of main function determine what data to scrape/clean
+* calls any of scrape_player_data.py, scrape_team_data.py, and/or clean_data.py
+* clean_data.py cleans the raw data produced from scraping
 
 ## SQL Database Creation
 To create a relational database of the data, run" create_usports_database.py\
-&emsp; - uses functions in sql_functions.py \
-&emsp; - takes the data from the csv files in tables folder (created with create_player_tables.py)
+* uses functions in sql_functions.py 
+* takes the data from the csv files in tables folder (created with create_player_tables.py)
 Folder titled 'sql_code' contains .sql files created prior to moving over to python (not up to date)
 
 
