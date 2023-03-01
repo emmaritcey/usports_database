@@ -6,7 +6,7 @@ Code includes scraping data from USports women's basketball website, saving raw 
 To install required libraries, run: ***pip install -r requirements.txt***
 
 ## Data Scraping and Cleaning
-To scrape individual player data run: ***collect_data.py ***
+To scrape individual player data run: ***collect_data.py***
 * saves data into csv files
 * general info data: missing values in 'NUM' and 'PLYR_YR' columns set to np.nan, missing data ('-') of numeric column set to 0
 * variables at beginning of main function determine what data to scrape/clean
