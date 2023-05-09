@@ -14,8 +14,7 @@ Code includes scraping data from USports women's basketball website, saving raw 
     - [Collection](#collection)
     - [SQL Database Creation](#sql-database-creation)
 - [Code Structure](#code-structure)
-- [Contribute](#contribute)
-- [License](#license)
+
 
 [(Back to top)](#table-of-contents)
 
@@ -28,7 +27,7 @@ Code includes scraping data from USports women's basketball website, saving raw 
 ## Setup/Installation Requirements
 The only requirements for this code are a computer, internet connection, and Python 3.0 or above
 To install required libraries, run: 
-'''
+'''bash
 pip install -r requirements.txt***
 '''
 
@@ -39,7 +38,7 @@ pip install -r requirements.txt***
 ### Collection
 The data for this project is obtained from USports (https://universitysport.prestosports.com/sports/wbkb/)
 To scrape individual player data run:
-'''python
+'''bash
 collect_data.py
 '''
 This script:
@@ -60,7 +59,7 @@ This script:
 
 ### SQL Database Creation
 To create a relational database of the data in data/processed, run: 
-'''python
+'''bash
 create_usports_database.py
 '''
 This script:
@@ -68,8 +67,11 @@ This script:
 * takes the data from the csv files in data/processed folder (created with create_player_tables.py)
 * Folder titled 'sql_code' contains .sql files created prior to moving over to python (not up to date)
 
+[(Back to top)](#data)
+
 
 ## Code Structure
+'''bash
 ├── data
 │   ├── processed
 │       ├── player_ballcontrol.csv
@@ -103,19 +105,6 @@ This script:
 └── requirements.txt
 '''
 
+[(Back to top)](#code-structure)
 
 
-# Installation
-
-
-# Usage
-[(Back to top)](#table-of-contents)
-
-# Development
-[(Back to top)](#table-of-contents)
-
-# Contribute
-[(Back to top)](#table-of-contents)
-
-# License
-[(Back to top)](#table-of-contents)
