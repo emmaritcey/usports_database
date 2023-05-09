@@ -14,7 +14,7 @@ def get_players_tbl(curr_path):
     players_tbl = player_names.drop_duplicates(ignore_index=True)
 
     #save to csv file where index is player id
-    players_tbl.to_csv(curr_path + '/data/tables/players.csv', index_label='player_id')
+    players_tbl.to_csv(curr_path + '/data/processed/players.csv', index_label='player_id')
     #players_tbl.to_csv(curr_path + '/data/tables/players_test.csv', index_label='player_id')
 
 
@@ -34,11 +34,11 @@ CAN ALSO DROP NAME COLUMN FROM FINAL TABLE
 def get_player_stats_tbl(curr_path, columns, raw_data_file):
     #load stats of all players from each season from raw csv
     #keep all columns from raw csv for this table
-    player_stats= pd.read_csv(curr_path + '/data/raw_csv_files/' + raw_data_file, 
+    player_stats= pd.read_csv(curr_path + '/data/raw/' + raw_data_file, 
                                usecols=columns)
     
     #load players.csv to get corresponding player id's for each row
-    players_df = pd.read_csv(curr_path + '/data/tables/players.csv', index_col='player_id')
+    players_df = pd.read_csv(curr_path + '/data/processed/players.csv', index_col='player_id')
 
     #create player id column in info df
     player_stats.insert(loc=0, column='player_id', value=0)
@@ -91,14 +91,14 @@ Table Columns: team_id, TEAM
 '''
 def get_teams_tbl(curr_path):
     #load names of all players from each season from raw csv
-    team_names = pd.read_csv(curr_path + '/data/tables/player_info.csv', usecols=['TEAM'])
+    team_names = pd.read_csv(curr_path + '/data/processed/player_info.csv', usecols=['TEAM'])
     #remove duplicate names, only keep one row for each player
     teams_tbl = team_names.drop_duplicates(ignore_index=True)
     
     teams_tbl = assign_conferences(teams_tbl)
 
     #save to csv file where index is player id
-    teams_tbl.to_csv(curr_path + '/data/tables/teams.csv', index=False)
+    teams_tbl.to_csv(curr_path + '/data/processed/teams.csv', index=False)
     #teams_tbl.to_csv(curr_path + '/data/tables/teams_test.csv', index=False)
 
 
@@ -110,7 +110,7 @@ def create_tables(tables, root_path):
         if table == 'player_info':
             columns = ['NAME', 'TEAM', 'SEASON','PLYR_YR', 'NUM', 'GP', 'GS', 'MIN/G']
             raw_data_file = 'player_stats_info.csv'
-            save_file = root_path + '/data/tables/player_info.csv'
+            save_file = root_path + '/data/processed/player_info.csv'
             #save_file = root_path + '/tables/test_info.csv'
             player_info = get_player_stats_tbl(root_path, columns, raw_data_file)
             
@@ -124,7 +124,7 @@ def create_tables(tables, root_path):
             columns = ['NAME', 'SEASON', 'FGM', 'FGA', 'FG%', 
                 '3FGM', '3FGA', '3FG%', 'FTM','FTA', 'FT%', 'PPG']
             raw_data_file = 'player_stats_shooting.csv'
-            save_file = root_path + '/data/tables/player_shooting.csv'
+            save_file = root_path + '/data/processed/player_shooting.csv'
             #save_file = root_path + '/tables/test_shooting.csv'
             player_shooting = get_player_stats_tbl(root_path, columns, raw_data_file)
             player_shooting.to_csv(save_file, index=False)
@@ -132,11 +132,12 @@ def create_tables(tables, root_path):
         if table == 'player_ballcntrl':
             columns = ['NAME', 'SEASON', 'DREB/G', 'OREB/G', 'REB/G', 'PF/G', 'A/G', 'TO/G', 'A/TO', 'STL/G', 'BLK/G']
             raw_data_file = 'player_stats_ball_control.csv'
-            save_file = root_path + '/data/tables/player_ballcontrol.csv'
+            save_file = root_path + '/data/processed/player_ballcontrol.csv'
             #save_file = root_path + '/tables/test_bc.csv'
             player_ballcntrl = get_player_stats_tbl(root_path, columns, raw_data_file)
             player_ballcntrl.to_csv(save_file, index=False)
         
-        if table == 'teams' and os.path.isfile(root_path + '/data/tables/player_info.csv'):
+        if table == 'teams' and os.path.isfile(root_path + '/data/processed/player_info.csv'):
             get_teams_tbl(root_path)
     
+#TODO: create filepath variable for easier code updates

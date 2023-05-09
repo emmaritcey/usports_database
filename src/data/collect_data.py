@@ -19,7 +19,7 @@ def main():
     wdir = os.getcwd()
     print(wdir)
 
-    data_save_path = wdir + "/data/raw_csv_files/"
+    data_save_path = wdir + "/data/raw/"
     
     if scrape and ind_plyr_avgs:
         scrape_player_data.run_scraping(plyr_stat_types, data_save_path)

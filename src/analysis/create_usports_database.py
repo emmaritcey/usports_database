@@ -1,9 +1,9 @@
-from src.utils.sql_functions import create_server_connection, create_database, create_db_connection, execute_query
+from utils.sql_functions import create_server_connection, create_database, create_db_connection, execute_query
 
 
 def initialize_database():
     #create connection
-    pw = "******" #enter password to root
+    pw = "*******" #enter password to root
     connection = create_server_connection("localhost", "root", pw)
     
     #create usports database
@@ -98,7 +98,7 @@ def create_entities(connection):
 
 def populate_entities(connection):
     load_players = """
-        LOAD DATA LOCAL INFILE '/Users/emmaritcey/Documents/basketball_research/usports_database/tables/players.csv' 
+        LOAD DATA LOCAL INFILE '/Users/emmaritcey/Documents/basketball_research/usports_database/data/processed/players.csv' 
         INTO TABLE players
         FIELDS TERMINATED BY ',' 
         OPTIONALLY ENCLOSED BY '"'
@@ -107,7 +107,7 @@ def populate_entities(connection):
     """
     
     load_teams = """
-        LOAD DATA LOCAL INFILE '/Users/emmaritcey/Documents/basketball_research/usports_database/tables/teams.csv'
+        LOAD DATA LOCAL INFILE '/Users/emmaritcey/Documents/basketball_research/usports_database/data/processed/teams.csv'
         INTO TABLE teams
         FIELDS TERMINATED BY ','
         OPTIONALLY ENCLOSED BY '"'
@@ -117,7 +117,7 @@ def populate_entities(connection):
 
     # if player year or number entry is loaded in as empty string, set value to NULL
     load_player_info = """
-        LOAD DATA LOCAL INFILE '/Users/emmaritcey/Documents/basketball_research/usports_database/tables/player_info.csv' 
+        LOAD DATA LOCAL INFILE '/Users/emmaritcey/Documents/basketball_research/usports_database/data/processed/player_info.csv' 
         INTO TABLE player_info
         FIELDS TERMINATED BY ',' 
         OPTIONALLY ENCLOSED BY '"'
@@ -129,7 +129,7 @@ def populate_entities(connection):
         """
         
     load_player_shooting = """
-        LOAD DATA LOCAL INFILE '/Users/emmaritcey/Documents/basketball_research/usports_database/tables/player_shooting.csv' 
+        LOAD DATA LOCAL INFILE '/Users/emmaritcey/Documents/basketball_research/usports_database/data/processed/player_shooting.csv' 
         INTO TABLE player_shooting
         FIELDS TERMINATED BY ',' 
         OPTIONALLY ENCLOSED BY '"'
@@ -138,7 +138,7 @@ def populate_entities(connection):
         """
 
     load_player_ballcontrol = """
-        LOAD DATA LOCAL INFILE '/Users/emmaritcey/Documents/basketball_research/usports_database/tables/player_ballcontrol.csv' 
+        LOAD DATA LOCAL INFILE '/Users/emmaritcey/Documents/basketball_research/usports_database/data/processed/player_ballcontrol.csv' 
         INTO TABLE player_ballcontrol
         FIELDS TERMINATED BY ',' 
         OPTIONALLY ENCLOSED BY '"'
