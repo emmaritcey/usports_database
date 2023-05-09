@@ -35,3 +35,5 @@ def main():
         clean_data.create_tables(data, wdir)
 
 main()
+
+#TODO: scrape player split stats and add to database
