@@ -89,11 +89,45 @@ def create_entities(connection):
             );
     """
     
+    create_team_splitstats_table = """
+        CREATE TABLE team_splitstats(
+            season int NOT NULL,
+            team varchar(20) NOT NULL,
+            split varchar(15) NOT NULL,
+            games_played int,
+            fgm float,
+            fga float,
+            fg_percent float,
+            fgm3 float,
+            fga3 float,
+            fg3_percent float,
+            ftm float,
+            fta float,
+            ft_percent float,
+            dreb float,
+            oreb float,
+            reb float,
+            apg float,
+            topg float,
+            spg float,
+            bpg float,
+            pf float,
+            ppg float,
+            off_eff float,
+            net_eff float,
+            PRIMARY KEY (season, team, split),
+            FOREIGN KEY (team) REFERENCES teams(name)
+            ON DELETE CASCADE #if a team is deleted from teams table, then they are deleted from team_splitstats table
+            ON UPDATE CASCADE #if a team is updated in teams table, then corresponding entries in team_splitstats table are updated
+            );
+    """
+    
     execute_query(connection, create_player_table)
     execute_query(connection, create_teams_table)
     execute_query(connection, create_player_info_table)
     execute_query(connection, create_player_shooting_table)
     execute_query(connection, create_player_ballcontrol_table)
+    execute_query(connection, create_team_splitstats_table)
 
 
 def populate_entities(connection):
@@ -145,12 +179,22 @@ def populate_entities(connection):
         LINES TERMINATED BY '\n'
         IGNORE 1 ROWS;
         """
+    
+    load_team_splitstats = """
+        LOAD DATA LOCAL INFILE '/Users/emmaritcey/Documents/basketball_research/usports_database/data/raw/team_splitstats.csv'
+        INTO TABLE team_splitstats
+        FIELDS TERMINATED BY ','
+        OPTIONALLY ENCLOSED BY '"'
+        LINES TERMINATED BY '\n'
+        IGNORE 1 ROWS;
+        """
         
     execute_query(connection, load_players)
     execute_query(connection, load_teams)
     execute_query(connection, load_player_info)
     execute_query(connection, load_player_shooting)
     execute_query(connection, load_player_ballcontrol)
+    execute_query(connection, load_team_splitstats)
 
 
 def setupDB():
