@@ -28,7 +28,7 @@ Code includes scraping data from USports women's basketball website, saving raw 
 The only requirements for this code are a computer, internet connection, and Python 3.0 or above
 To install required libraries, run: 
 ```bash
-pip install -r requirements.txt***
+pip install -r requirements.txt
 ```
 
 [(Back to top)](#setupinstallation-requirements)
