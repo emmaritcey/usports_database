@@ -13,9 +13,8 @@ TEAMS =  ['acadia', 'capebreton', 'dalhousie', 'memorial', "saintmarys", 'stfx',
     'york', 'alberta', 'brandon', 'calgary', 'lethbridge', 'macewan', 'manitoba', 'mountroyal', 
     'regina', 'saskatchewan', 'thompsonrivers', 'trinitywestern', 'ubc', 'ubcokanagan',
     'ufv', 'unbc', 'victoria', 'winnipeg']
-TEAMS = ['acadia']
+
 YEARS = ['2009-10', '2010-11', '2011-12', '2012-13', '2013-14', '2014-15', '2015-16', '2016-17', '2017-18', '2018-19', '2019-20', '2021-22', '2022-23']
-YEARS = ['2022-23']
 
 def get_team_splitstats(headers, fileName):
     print("getting links...")
@@ -90,5 +89,5 @@ def run_scraping(stat_type, data_save_path):
             headers = ['SEASON', 'TEAM', 'SPLIT', 'GP', 'FGM', 'FGA', 'FG%', '3FGM', '3FGA','3FG%', 'FTM', 'FTA', 'FT%', 
                         'DREB/G', 'OREB/G', 'REB/G', 'A/G','TO/G', 'STL/G', 'BLK/G','PF/G', 'PPG', 'OFF_EFF', 'NET_EFF']
             fileName = data_save_path + 'team_splitstats.csv'
-            fileName = data_save_path + 'test.csv'
+            #fileName = data_save_path + 'test.csv'
             get_team_splitstats(headers, fileName)

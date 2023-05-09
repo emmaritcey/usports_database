@@ -5055,7 +5055,7 @@ August Ricketts,lakehead,2018,S,21,0.0,0.0,0.0
 Bridget O'Reilly,lakehead,2018,S,22,24.0,24.0,31.0
 Leashja Grant,lakehead,2018,S,23,24.0,24.0,26.1
 Emily Tinnes,laurentian,2018,nan,04,23.0,22.0,34.1
-Josée Tremblay,laurentian,2018,nan,05,4.0,0.0,1.0
+JosÃ©e Tremblay,laurentian,2018,nan,05,4.0,0.0,1.0
 Andrea Zulich,laurentian,2018,nan,06,23.0,12.0,24.3
 Kendel Dunn,laurentian,2018,nan,07,12.0,0.0,4.5
 Danielle Reid,laurentian,2018,nan,08,16.0,1.0,5.3
@@ -6858,18 +6858,17 @@ Chloe Wilson,dalhousie,2022,nan,22,10.0,5.0,26.3
 Ashley Davis,memorial,2022,nan,4,2.0,0.0,0.0
 Emma Power,memorial,2022,nan,6,16.0,0.0,15.1
 Alana Short,memorial,2022,nan,7,16.0,16.0,30.5
-Rebecka Ekst,memorial,2022,nan,8,16.0,16.0,29.8
+Rebecka Ekstrom,memorial,2022,nan,8,16.0,16.0,29.8
 Alyssa Jenkins,memorial,2022,nan,10,12.0,0.0,18.3
 Laura Murray,memorial,2022,nan,11,11.0,0.0,3.0
 Carly Stevenson,memorial,2022,nan,12,11.0,0.0,4.2
 Erin Long,memorial,2022,nan,13,14.0,0.0,11.8
-InÃƒ Sala Margarit,memorial,2022,nan,14,16.0,16.0,29.7
+Ines Sala Margarit,memorial,2022,nan,14,16.0,16.0,29.7
 Hannah Green,memorial,2022,nan,15,16.0,16.0,26.5
 Caroline Jardine,memorial,2022,nan,21,8.0,0.0,3.6
-Sarah-Kim CÃƒƒ,memorial,2022,nan,23,16.0,0.0,10.3
+Sarah-Kim Cote,memorial,2022,nan,23,16.0,0.0,10.3
 Mackenzi Chapman,memorial,2022,nan,31,12.0,0.0,5.8
 Gabrielle Roche,memorial,2022,nan,32,16.0,16.0,22.8
-Aluel Achiek,memorial,2022,R,RS,0.0,0.0,0.0
 Katelyn Power,saintmarys,2022,2n,4,16.0,0.0,13.6
 Courtney Donaldson,saintmarys,2022,3r,5,16.0,6.0,22.4
 Sarah Forgie,saintmarys,2022,3r,6,15.0,0.0,7.5
@@ -7546,7 +7545,7 @@ Abby Benson,winnipeg,2022,nan,15,3.0,0.0,3.0
 Sandy Saunders,acadia,2023,Jr,1,19.0,19.0,27.7
 Haley McDonald,acadia,2023,Sr,2,19.0,19.0,30.6
 Megan Hebert,acadia,2023,Jr,3,18.0,0.0,5.7
-Amélie Bouchard,acadia,2023,So,4,7.0,0.0,5.7
+AmÃƒƒƒÃƒ‚Ã‚Â©lie Bouchard,acadia,2023,So,4,7.0,0.0,5.7
 Ryan George,acadia,2023,So,5,18.0,0.0,7.2
 Bianca Helmig,acadia,2023,Fr,6,19.0,19.0,26.8
 Olivia Moller,acadia,2023,Jr,7,19.0,1.0,13.8
@@ -7604,7 +7603,6 @@ Gabrielle Roche,memorial,2023,nan,32,19.0,19.0,22.0
 Katelyn Power,saintmarys,2023,3r,4,20.0,1.0,16.1
 Courtney Donaldson,saintmarys,2023,S,5,18.0,0.0,19.7
 Sarah Forgie,saintmarys,2023,S,6,20.0,0.0,11.7
-Sarah Burnell,saintmarys,2023,3r,7,1.0,0.0,0.0
 Clara Gascoigne,saintmarys,2023,3r,8,20.0,20.0,29.5
 Alaina McMillan,saintmarys,2023,S,9,20.0,20.0,30.3
 Aiyanna Empringham,saintmarys,2023,S,10,12.0,0.0,5.8
@@ -7656,69 +7654,69 @@ Devon Lawlor,upei,2023,2n,14,20.0,4.0,23.6
 Aiden Rainford,upei,2023,4t,23,20.0,20.0,25.6
 Elise Plaschka,upei,2023,2n,24,17.0,0.0,9.9
 Karla Yepez,upei,2023,5t,25,17.0,17.0,27.7
-Amaiquen Siciliano,bishops,2023,nan,4,15.0,15.0,34.1
-Victoria Gauna,bishops,2023,nan,5,12.0,7.0,25.3
-Lea Boucher,bishops,2023,nan,6,9.0,0.0,7.1
+Amaiquen Siciliano,bishops,2023,nan,4,16.0,16.0,34.3
+Victoria Gauna,bishops,2023,nan,5,13.0,7.0,25.5
+Lea Boucher,bishops,2023,nan,6,10.0,0.0,6.5
 Grace Tilley,bishops,2023,nan,7,9.0,0.0,1.9
 Shanie Giguere,bishops,2023,nan,8,3.0,0.0,1.7
-Jennifer Louis,bishops,2023,nan,9,15.0,14.0,28.5
-Emily MacNeil,bishops,2023,nan,10,12.0,1.0,8.5
-Jasmine Martel,bishops,2023,nan,11,15.0,4.0,14.3
-Jessica Vidovic,bishops,2023,nan,12,14.0,1.0,7.6
-Jael Kabunda,bishops,2023,nan,14,13.0,12.0,26.1
-Sandra Mbekou,bishops,2023,nan,15,14.0,1.0,14.7
-Katerina Stoupas,bishops,2023,nan,21,15.0,8.0,17.5
-Kalina Alexander-Renaud,bishops,2023,nan,22,8.0,2.0,16.0
-Deborah Aboagye,bishops,2023,nan,24,12.0,10.0,25.9
-Areej Burgonio,concordia,2023,nan,3,15.0,15.0,38.5
-Cassandra L Huquet,concordia,2023,nan,5,15.0,6.0,22.4
-Rowena Blais,concordia,2023,nan,6,15.0,14.0,34.4
+Jennifer Louis,bishops,2023,nan,9,16.0,15.0,27.9
+Emily MacNeil,bishops,2023,nan,10,13.0,1.0,8.0
+Jasmine Martel,bishops,2023,nan,11,16.0,4.0,14.6
+Jessica Vidovic,bishops,2023,nan,12,15.0,1.0,7.3
+Jael Kabunda,bishops,2023,nan,14,14.0,13.0,25.5
+Sandra Mbekou,bishops,2023,nan,15,15.0,1.0,14.5
+Katerina Stoupas,bishops,2023,nan,21,16.0,9.0,17.4
+Kalina Alexander-Renaud,bishops,2023,nan,22,9.0,2.0,16.1
+Deborah Aboagye,bishops,2023,nan,24,13.0,11.0,25.8
+Areej Burgonio,concordia,2023,nan,3,16.0,16.0,38.3
+Cassandra L Huquet,concordia,2023,nan,5,16.0,6.0,22.5
+Rowena Blais,concordia,2023,nan,6,16.0,15.0,34.1
 Serena Tchida,concordia,2023,nan,8,8.0,7.0,29.4
-Fabiola Lamour,concordia,2023,nan,11,13.0,2.0,15.5
-Florence Poirier,concordia,2023,nan,14,15.0,7.0,20.4
+Fabiola Lamour,concordia,2023,nan,11,14.0,2.0,15.4
+Florence Poirier,concordia,2023,nan,14,16.0,8.0,21.1
 Tyra Atherley,concordia,2023,nan,15,0.0,0.0,0.0
-Angela Batrla,concordia,2023,nan,20,9.0,9.0,33.2
+Angela Batrla,concordia,2023,nan,20,10.0,10.0,32.9
 Stacey Imbert,concordia,2023,nan,24,4.0,0.0,7.5
-Gretta Ineza,concordia,2023,nan,25,15.0,15.0,32.9
-Mia Ble voua,laval,2023,nan,0,6.0,0.0,3.3
+Gretta Ineza,concordia,2023,nan,25,16.0,16.0,33.1
+Mia Ble voua,laval,2023,nan,0,7.0,0.0,4.1
 Laurie Champagne,laval,2023,nan,2,0.0,0.0,0.0
-Frederique B.-Blais,laval,2023,nan,3,15.0,15.0,30.0
-Lea-Sophie Verret,laval,2023,nan,4,15.0,15.0,33.1
-Audrey Beland,laval,2023,nan,6,12.0,9.0,23.8
-Erika Nzodoum,laval,2023,nan,8,11.0,0.0,9.8
-Elodie Lajoie,laval,2023,nan,9,15.0,6.0,24.7
-Catherine Champagne,laval,2023,nan,10,15.0,0.0,12.3
-Sabrine Khelifi,laval,2023,nan,12,15.0,15.0,28.3
-Alexia Marois,laval,2023,nan,13,14.0,0.0,9.4
-Fatima Diop,laval,2023,nan,18,7.0,0.0,3.7
-Tara Imbert,laval,2023,nan,19,15.0,15.0,25.9
-Emmanuelle R Boni,laval,2023,nan,20,7.0,0.0,7.3
+Frederique B.-Blais,laval,2023,nan,3,16.0,16.0,29.2
+Lea-Sophie Verret,laval,2023,nan,4,16.0,16.0,32.6
+Audrey Beland,laval,2023,nan,6,13.0,9.0,22.6
+Erika Nzodoum,laval,2023,nan,8,12.0,0.0,10.4
+Elodie Lajoie,laval,2023,nan,9,16.0,7.0,24.9
+Catherine Champagne,laval,2023,nan,10,16.0,0.0,12.9
+Sabrine Khelifi,laval,2023,nan,12,16.0,16.0,27.7
+Alexia Marois,laval,2023,nan,13,15.0,0.0,9.5
+Fatima Diop,laval,2023,nan,18,8.0,0.0,4.4
+Tara Imbert,laval,2023,nan,19,16.0,16.0,25.9
+Emmanuelle R Boni,laval,2023,nan,20,8.0,0.0,7.8
 Alexia Thiffault,laval,2023,nan,22,0.0,0.0,0.0
 Eve-Marie Houle,laval,2023,nan,32,8.0,0.0,7.8
 Astan Wal Diarra,laval,2023,nan,34,0.0,0.0,0.0
-Amelie Rochon,mcgill,2023,S,2,15.0,3.0,14.1
-Sydney Foran,mcgill,2023,S,4,9.0,0.0,7.8
-Daniella Mbengo,mcgill,2023,F,5,15.0,15.0,28.4
-Emma-Jane Scotten,mcgill,2023,J,6,15.0,15.0,29.5
-Stephy Tchoukuiegno,mcgill,2023,F,7,11.0,4.0,25.8
-Charlotte Guerin,mcgill,2023,S,8,15.0,12.0,24.7
-Joy Taan-Tobias,mcgill,2023,S,9,13.0,0.0,13.4
-Kristy Awikeh,mcgill,2023,J,10,15.0,12.0,21.7
-Ava Renon,mcgill,2023,S,11,11.0,0.0,6.0
-Jessica Salanon,mcgill,2023,S,12,14.0,12.0,23.4
-Vanessa Ougrinov,mcgill,2023,F,14,4.0,0.0,2.5
+Amelie Rochon,mcgill,2023,S,2,16.0,4.0,14.2
+Sydney Foran,mcgill,2023,S,4,10.0,0.0,7.7
+Daniella Mbengo,mcgill,2023,F,5,16.0,16.0,28.9
+Emma-Jane Scotten,mcgill,2023,J,6,16.0,16.0,29.6
+Stephy Tchoukuiegno,mcgill,2023,F,7,12.0,5.0,25.9
+Charlotte Guerin,mcgill,2023,S,8,16.0,12.0,23.8
+Joy Taan-Tobias,mcgill,2023,S,9,14.0,0.0,13.3
+Kristy Awikeh,mcgill,2023,J,10,16.0,12.0,21.7
+Ava Renon,mcgill,2023,S,11,12.0,0.0,6.1
+Jessica Salanon,mcgill,2023,S,12,15.0,13.0,23.9
+Vanessa Ougrinov,mcgill,2023,F,14,5.0,0.0,2.2
 Andrea Batrla,mcgill,2023,F,15,12.0,0.0,5.3
 Katie Rathwell,mcgill,2023,S,22,14.0,2.0,16.5
-Paul beline Ibata,uqam,2023,nan,04,14.0,14.0,34.8
-Hardyna Duverger,uqam,2023,nan,05,7.0,0.0,3.9
-Rachel paradis,uqam,2023,nan,06,12.0,0.0,7.8
-Yasmine Gasmi,uqam,2023,nan,07,14.0,0.0,19.1
-fredlaine Verrier,uqam,2023,nan,09,14.0,14.0,33.6
+Paul beline Ibata,uqam,2023,nan,04,16.0,16.0,34.4
+Hardyna Duverger,uqam,2023,nan,05,8.0,0.0,5.8
+Rachel paradis,uqam,2023,nan,06,14.0,2.0,9.9
+Yasmine Gasmi,uqam,2023,nan,07,16.0,0.0,19.3
+fredlaine Verrier,uqam,2023,nan,09,16.0,16.0,32.8
 Judith Lavoie,uqam,2023,nan,10,6.0,6.0,27.3
-Mar tracy Cilien,uqam,2023,nan,12,12.0,0.0,11.3
-Alexe Dufresne,uqam,2023,nan,13,14.0,14.0,32.7
-Elisa Haberzettel,uqam,2023,nan,14,13.0,8.0,18.8
-Fredlyne Verrier,uqam,2023,nan,24,14.0,14.0,32.5
+Mar tracy Cilien,uqam,2023,nan,12,14.0,0.0,12.1
+Alexe Dufresne,uqam,2023,nan,13,16.0,16.0,32.6
+Elisa Haberzettel,uqam,2023,nan,14,14.0,8.0,18.6
+Fredlyne Verrier,uqam,2023,nan,24,16.0,16.0,32.4
 Riya Donnelly,algoma,2023,F,01,17.0,0.0,11.6
 Qeila Mbonihankuye,algoma,2023,S,03,19.0,5.0,13.8
 Allison Read,algoma,2023,S,04,22.0,19.0,22.8

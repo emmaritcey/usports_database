@@ -1,4 +1,4 @@
-from sql_functions import create_server_connection, create_database, create_db_connection, execute_query
+from src.utils.sql_functions import create_server_connection, create_database, create_db_connection, execute_query
 
 
 def initialize_database():

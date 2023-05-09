@@ -17,10 +17,8 @@ TEAMS =  ['acadia', 'capebreton', 'dalhousie', 'memorial', "saintmarys", 'stfx',
         'york', 'alberta', 'brandon', 'calgary', 'lethbridge', 'macewan', 'manitoba', 'mountroyal', 
         'regina', 'saskatchewan', 'thompsonrivers', 'trinitywestern', 'ubc', 'ubcokanagan',
         'ufv', 'unbc', 'victoria', 'winnipeg']
-TEAMS = ['acadia']
 
 YEARS = ['2009-10', '2010-11', '2011-12', '2012-13', '2013-14', '2014-15', '2015-16', '2016-17', '2017-18', '2018-19', '2019-20', '2021-22', '2022-23']
-YEARS = ['2022-23']
 
 
 def get_player_stats(stat_type, headers, table_index, fileName):
@@ -110,21 +108,21 @@ def run_scraping(stat_type, data_save_path):
             headers = ['NAME', 'TEAM', 'SEASON', 'PLYR_YR', 'NUM', 'GP', 'GS', 'MIN/G']
             table_index = 3
             fileName = data_save_path + 'player_stats_info.csv'
-            fileName = data_save_path + 'info_test.csv'
+            #fileName = data_save_path + 'info_test.csv'
             print("getting player info  stats...")
             get_player_stats(stat, headers, table_index, fileName)
         elif stat == 'shooting':
             headers = ['NAME', 'SEASON', 'FGM', 'FGA', 'FG%', '3FGM', '3FGA','3FG%', 'FTM', 'FTA', 'FT%', 'PPG']
             table_index = 3
             fileName = data_save_path + 'player_stats_shooting.csv'
-            fileName = data_save_path + 'sh_test.csv'
+            #fileName = data_save_path + 'sh_test.csv'
             print("getting player shooting stats...")
             get_player_stats(stat, headers, table_index, fileName)
         elif stat == 'ball control':
             headers = ['NAME', 'SEASON', 'DREB/G', 'OREB/G', 'REB/G', 'PF/G', 'A/G','TO/G', 'A/TO', 'STL/G', 'BLK/G']
             table_index = 4
             fileName = data_save_path + 'player_stats_ball_control.csv'
-            fileName = data_save_path + 'bc_test.csv'
+            #fileName = data_save_path + 'bc_test.csv'
             print("getting player ball control stats...")
             get_player_stats(stat, headers, table_index, fileName)
         

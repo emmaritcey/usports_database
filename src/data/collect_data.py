@@ -1,6 +1,6 @@
 
 '''
-Script runs all of the data scraping and cleaning
+Script runs all of the data scraping, cleaning, and creating of SQL database
 '''
 
 import preprocessUtils.scrape_player_data as scrape_player_data, preprocessUtils.scrape_team_data as scrape_team_data
@@ -9,16 +9,17 @@ import os
 
 
 def main():
-    
-    scrape = 0
-    clean = 1
-    ind_plyr_avgs = 1
-    plyr_stat_types = ['general', 'ball control', 'shooting']
-    team_avgs = 0
-    team_stat_type = ['splitstat']
+    scrape = 0 #boolean to scrape data from website and save raw data as csv files
+    clean = 1  #boolean to clean raw data and save as new csv files
+    ind_plyr_avgs = 1 #boolean to run scraping/cleaning on individual player data
+    plyr_stat_types = ['general', 'ball control', 'shooting'] #three types of player data to collect
+    team_avgs = 0 #boolean to run scraping on team data
+    team_stat_type = ['splitstat'] 
     
     wdir = os.getcwd()
-    data_save_path = wdir + "/raw_csv_files/"
+    print(wdir)
+
+    data_save_path = wdir + "/data/raw_csv_files/"
     
     if scrape and ind_plyr_avgs:
         scrape_player_data.run_scraping(plyr_stat_types, data_save_path)
