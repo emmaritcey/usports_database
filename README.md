@@ -27,9 +27,9 @@ Code includes scraping data from USports women's basketball website, saving raw 
 ## Setup/Installation Requirements
 The only requirements for this code are a computer, internet connection, and Python 3.0 or above
 To install required libraries, run: 
-'''bash
+```bash
 pip install -r requirements.txt***
-'''
+```
 
 [(Back to top)](#setupinstallation-requirements)
 
@@ -38,9 +38,9 @@ pip install -r requirements.txt***
 ### Collection
 The data for this project is obtained from USports (https://universitysport.prestosports.com/sports/wbkb/)
 To scrape individual player data run:
-'''bash
+```bash
 collect_data.py
-'''
+```
 This script:
 * scrapes individual and team data from USports website and saves raw data into csv files (when scrape = 1). Files saved in data/raw_csv_files:
     * players_stats_ball_control.csv
@@ -59,9 +59,9 @@ This script:
 
 ### SQL Database Creation
 To create a relational database of the data in data/processed, run: 
-'''bash
+```bash
 create_usports_database.py
-'''
+```
 This script:
 * uses functions in ***src/utils/sql_functions.py ***
 * takes the data from the csv files in data/processed folder (created with create_player_tables.py)
@@ -71,7 +71,7 @@ This script:
 
 
 ## Code Structure
-'''bash
+```bash
 ├── data
 │   ├── processed
 │       ├── player_ballcontrol.csv
@@ -103,7 +103,7 @@ This script:
 ├── .gitignore
 ├── README.md
 └── requirements.txt
-'''
+```
 
 [(Back to top)](#code-structure)
 
