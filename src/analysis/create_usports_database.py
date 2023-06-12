@@ -3,7 +3,7 @@ from utils.sql_functions import create_server_connection, create_database, creat
 
 def initialize_database():
     #create connection
-    pw = "*******" #enter password to root
+    pw = "********" #enter password to root
     connection = create_server_connection("localhost", "root", pw)
     
     #create usports database
@@ -22,7 +22,7 @@ def create_entities(connection):
         CREATE TABLE players(
             player_id int NOT NULL,
             NAME varchar(50) NOT NULL,
-            PRIMARY KEY (player_id)
+            PRIMARY KEY (player_id, NAME)
             );
         """
     create_teams_table = """
@@ -122,12 +122,26 @@ def create_entities(connection):
             );
     """
     
+    create_allstars_table ="""
+        CREATE TABLE allstars(
+            season int NOT NULL,
+            NAME varchar(50) NOT NULL,
+            team varchar(20) NOT NULL,
+            conference varchar(10),
+            allstar_team int NOT NULL,
+            PRIMARY KEY (season, NAME, team)
+            #ON DELETE CASCADE #if a player is deleted from players table, then they are deleted from allstars table
+            #ON UPDATE CASCADE #if a player is updated in players table, then corresponding entries in allstars table are updated
+            );
+    """
+    
     execute_query(connection, create_player_table)
     execute_query(connection, create_teams_table)
     execute_query(connection, create_player_info_table)
     execute_query(connection, create_player_shooting_table)
     execute_query(connection, create_player_ballcontrol_table)
     execute_query(connection, create_team_splitstats_table)
+    execute_query(connection, create_allstars_table)
 
 
 def populate_entities(connection):
@@ -189,12 +203,22 @@ def populate_entities(connection):
         IGNORE 1 ROWS;
         """
         
+    load_allstars = """
+        LOAD DATA LOCAL INFILE '/Users/emmaritcey/Documents/basketball_research/usports_database/data/processed/all_stars.csv'
+        INTO TABLE allstars
+        FIELDS TERMINATED BY ','
+        OPTIONALLY ENCLOSED BY '"'
+        LINES TERMINATED BY '\n'
+        IGNORE 1 ROWS;
+        """
+        
     execute_query(connection, load_players)
     execute_query(connection, load_teams)
     execute_query(connection, load_player_info)
     execute_query(connection, load_player_shooting)
     execute_query(connection, load_player_ballcontrol)
     execute_query(connection, load_team_splitstats)
+    execute_query(connection, load_allstars)
 
 
 def setupDB():
@@ -220,5 +244,5 @@ def main():
 if __name__ == "__main__":
     main()
 
-#TODO: add in creating and populating team split stat tables (code in sql_testing notebook)
+
 #TODO: change so that database name is instantiated in main so it's more easilty changed
