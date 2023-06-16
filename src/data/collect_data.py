@@ -10,7 +10,7 @@ import os
 
 def main():
     scrape = 0 #boolean to scrape data from website and save raw data as csv files
-    clean = 1  #boolean to clean raw data and save as new csv files
+    clean = 1 #boolean to clean raw data and save as new csv files
     ind_plyr_avgs = 1 #boolean to run scraping/cleaning on individual player data
     plyr_stat_types = ['general', 'ball control', 'shooting'] #three types of player data to collect
     team_avgs = 0 #boolean to run scraping on team data

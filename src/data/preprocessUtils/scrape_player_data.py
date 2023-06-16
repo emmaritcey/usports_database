@@ -27,6 +27,9 @@ def get_player_stats(stat_type, headers, table_index, fileName):
     end_url = '?view=lineup&r=0&pos=sh'
 
     rows = [headers]
+    flag_MR = 0
+    flag_ET = 0
+    flag_EJ = 0
 
     for year in YEARS:
         for team in TEAMS:
@@ -53,7 +56,11 @@ def get_player_stats(stat_type, headers, table_index, fileName):
 
                         #get name
                         name = parse_name(stats[1].text) #name is long string with spaces and new line characters
-                    
+                        
+                        #to account for empty table rows
+                        if len(name) == 0:
+                            continue
+                                                 
                         team_name = team
                         season_year = int(year[0:2]+year[-2:]) #year is by year that Natty Championship is held
                         player_year = parse_values_player(stats[2].text)
@@ -66,6 +73,8 @@ def get_player_stats(stat_type, headers, table_index, fileName):
                         
                     elif stat_type == 'shooting':
                         name = parse_name(stats[1].text) #name is long string with spaces and new line characters
+                        if len(name) == 0:
+                            continue
                         season_year = int(year[0:2]+year[-2:]) #year is by year that Natty Championship is held
 
                         fgm, fga = parse_shooting(parse_values_player(stats[7].text))
@@ -80,6 +89,8 @@ def get_player_stats(stat_type, headers, table_index, fileName):
                         
                     elif stat_type == 'ball control':
                         name = parse_name(stats[1].text) #name is long string with spaces and new line characters
+                        if len(name) == 0:
+                            continue
                         season_year = int(year[0:2]+year[-2:]) #year is by year that Natty Championship is held
                         
                         reb_def = float(parse_values_player(stats[7].text))

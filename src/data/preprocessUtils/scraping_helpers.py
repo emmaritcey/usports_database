@@ -57,16 +57,18 @@ def parse_name(string):
     name = ''
     fn_flag = 0
     for idx in range(len(temp_list)): #loop through list, select first and last name, remove \n chars, 
-        if len(temp_list[idx]) > 0 and temp_list[idx]!='\n\n' and temp_list[idx] != '\n':
+        if len(temp_list[idx]) > 0 and temp_list[idx]!='\n\n' and temp_list[idx] != '\n' and temp_list[idx] != '\n\n\n':
             #check for upper limit as there are some text errors which cause super long strings (only a few cases)
             if len(temp_list[idx]) > 50:  #just use first three letters of first name
-                end_idx = 4
+               end_idx = 4
             else:
                 end_idx = -1
                   
             if fn_flag:
-                name = name + ' ' + temp_list[idx][0:end_idx] #add space bw first and last, remove \n from end of text
+                name = name + ' ' + temp_list[idx][0:] #add space bw first and last, remove \n from end of text
             else:
-                name = temp_list[idx][0:end_idx] #remove \n from end of text
+                name = temp_list[idx][0:] #remove \n from end of text
                 fn_flag = 1
+            if name[-1] == '\n':
+                name = name[0:-1]
     return name
