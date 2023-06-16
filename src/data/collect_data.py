@@ -5,6 +5,7 @@ Script runs all of the data scraping, cleaning, and creating of SQL database
 
 import preprocessUtils.scrape_player_data as scrape_player_data, preprocessUtils.scrape_team_data as scrape_team_data
 import preprocessUtils.clean_data as clean_data
+import preprocessUtils.update_names as update_names
 import os
 
 
@@ -33,6 +34,9 @@ def main():
         data = ['players', 'player_info', 'player_shooting', 'player_ballcntrl', 'teams']
 
         clean_data.create_tables(data, wdir)
+        update_names.run()
+        
+        
 
 main()
 
