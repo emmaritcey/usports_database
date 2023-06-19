@@ -3,7 +3,7 @@ from utils.sql_functions import create_server_connection, create_database, creat
 
 def initialize_database():
     #create connection
-    pw = "Queens2021!" #enter password to root
+    pw = "******" #enter password to root
     connection = create_server_connection("localhost", "root", pw)
     
     #create usports database
