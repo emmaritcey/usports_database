@@ -20,7 +20,6 @@ TEAMS =  ['acadia', 'capebreton', 'dalhousie', 'memorial', "saintmarys", 'stfx',
 
 YEARS = ['2009-10', '2010-11', '2011-12', '2012-13', '2013-14', '2014-15', '2015-16', '2016-17', '2017-18', '2018-19', '2019-20', '2021-22', '2022-23']
 
-
 def get_player_stats(stat_type, headers, table_index, fileName):
 
     base_url = 'https://universitysport.prestosports.com/sports/wbkb/'
@@ -55,7 +54,7 @@ def get_player_stats(stat_type, headers, table_index, fileName):
                         number = stats[0].text
 
                         #get name
-                        name = parse_name(stats[1].text) #name is long string with spaces and new line characters
+                        name = parse_name(stats[1].text, TEAMS) #name is long string with spaces and new line characters
                         
                         #to account for empty table rows
                         if len(name) == 0:
@@ -72,7 +71,7 @@ def get_player_stats(stat_type, headers, table_index, fileName):
                         rows.append([name, team_name, season_year, player_year, number, gp, gs, min_pg])
                         
                     elif stat_type == 'shooting':
-                        name = parse_name(stats[1].text) #name is long string with spaces and new line characters
+                        name = parse_name(stats[1].text, TEAMS) #name is long string with spaces and new line characters
                         if len(name) == 0:
                             continue
                         season_year = int(year[0:2]+year[-2:]) #year is by year that Natty Championship is held
@@ -88,7 +87,7 @@ def get_player_stats(stat_type, headers, table_index, fileName):
                         rows.append([name, season_year, fgm, fga, fg_pct, fgm3, fga3, fg3_pct, ftm, fta, ft_pct, ppg])
                         
                     elif stat_type == 'ball control':
-                        name = parse_name(stats[1].text) #name is long string with spaces and new line characters
+                        name = parse_name(stats[1].text, TEAMS) #name is long string with spaces and new line characters
                         if len(name) == 0:
                             continue
                         season_year = int(year[0:2]+year[-2:]) #year is by year that Natty Championship is held

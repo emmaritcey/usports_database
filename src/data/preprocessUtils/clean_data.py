@@ -9,7 +9,7 @@ Table Columns: player_id, NAME
 '''
 def get_players_tbl(curr_path):
     #load names of all players from each season from raw csv
-    player_names = pd.read_csv(curr_path + '/data/raw/player_stats_info.csv', usecols=['NAME'])
+    player_names = pd.read_csv(curr_path + '/data/duplicates_removed/player_stats_info.csv', usecols=['NAME'])
     #remove duplicate names, only keep one row for each player
     players_tbl = player_names.drop_duplicates(ignore_index=True)
 
@@ -26,14 +26,11 @@ INPUT:
     - columns: columns of the table
     - raw_data_file: file path containing raw data
     - save_file: file to save table to             
-
-ASSUMES NO TWO PLAYERS HAVE THE SAME NAME 
-    NEED TO CHANGE THIS LATER
 '''
 def get_player_stats_tbl(curr_path, columns, raw_data_file):
     #load stats of all players from each season from raw csv
     #keep all columns from raw csv for this table
-    player_stats= pd.read_csv(curr_path + '/data/raw/' + raw_data_file, 
+    player_stats= pd.read_csv(curr_path + '/data/duplicates_removed/' + raw_data_file, 
                                usecols=columns)
     
     #load players.csv to get corresponding player id's for each row

@@ -6,5 +6,6 @@ player_queries.ipynb
 dim_reduction.ipynb
 ideas.py
 team_splitstats.ipynb
+fix_duplicate_names_notebook.py
 model.py
 model.ipynb
