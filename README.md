@@ -39,7 +39,7 @@ pip install -r requirements.txt
 The data for this project is obtained from USports (https://universitysport.prestosports.com/sports/wbkb/)
 To scrape individual player data run:
 ```bash
-collect_data.py
+scrape_data.py
 ```
 This script:
 * scrapes individual and team data from USports website and saves raw data into csv files (when scrape = 1). Files saved in data/raw_csv_files:
